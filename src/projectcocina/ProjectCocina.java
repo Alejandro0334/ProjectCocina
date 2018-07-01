@@ -23,7 +23,7 @@ public class ProjectCocina {
 
     private static final int NUMERO_INGREDIENTES = 5;
     private static final int NUMERO_PLATOS = 2;
-    private static final int NUMERO_RECETAS = 2;
+    private static final int NUMERO_RECETAS = 1;
     
     public ProjectCocina() {
         ingredientes = new Ingrediente[NUMERO_INGREDIENTES];
@@ -60,7 +60,7 @@ public class ProjectCocina {
             i5.setCantidad(1);
             ingredientes[4]=i5;
             
-            System.out.print("Los ingredientes son: ");
+            System.out.print("----Los ingredientes disponbles:---- "+"\n");
             for(Ingrediente ingredientes: ingredientes)
             {
                 System.out.println(ingredientes);
@@ -75,6 +75,7 @@ public class ProjectCocina {
             Ingrediente i2r1 = new Ingrediente();
             Ingrediente i3r1 = new Ingrediente();
             Ingrediente i4r1 = new Ingrediente();
+            Ingrediente i5r1 = new Ingrediente();
             
             Ingrediente i1r2 = new Ingrediente();
             
@@ -97,19 +98,23 @@ public class ProjectCocina {
                     i4r1.setCantidad(1);
                     ingredientes[3] = i4r1;
                     
+                    i5r1.setNombre("platano");
+                    i5r1.setCantidad(3);
+                    ingredientes[4] = i5r1;
+                    
                     r1.setNombre(plato.getNombre());
                     r1.setIngrediente(ingredientes);
                     receta[0] = r1;
-                
                 
                 break;
             }
             
             System.out.println("-----Receta "+ plato.getNombre() +" -----");
-            for(Receta receta1: receta)
+            
+            for(Receta recetas: receta )
             {
-                System.out.println(receta1);
-            }   
+                System.out.println(recetas);
+            }  
         }
 
         public void solicitarPedido()
@@ -128,17 +133,18 @@ public class ProjectCocina {
               
         public void crearPlato()
         {
-            Plato plato = new Plato();
+            Plato p1 = new Plato();
+            Plato p2 = new Plato();
+            
+            p1.setNombre("Sancocho");
+            p1.setTipo("Liquido");
+            p1.setPrecio(2.000);
+            platos[0] = p1;
 
-            plato.setNombre("Sancocho");
-            plato.setTipo("Liquido");
-            plato.setPrecio(2.000);
-            platos[0] = plato;
-
-            plato.setNombre("Pollo");
-            plato.setTipo("Solido");
-            plato.setPrecio(10.000);
-            platos[1] = plato;
+            p2.setNombre("Pollo");
+            p2.setTipo("Solido");
+            p2.setPrecio(10.000);
+            platos[1] = p2;
             
             System.out.println("-----Platos Disponibles-----");
             for(Plato plato1: platos)
@@ -152,8 +158,18 @@ public class ProjectCocina {
             Cliente client = new Cliente();
             client.setNombre("Marta");
             
-            System.out.println("-----Cliente-----");
-            System.out.println(client);
+            System.out.println("-----Cliente "+client.getNombre()+"-----");
+        }
+        
+        public void validarIgredientes()
+        {
+            for(Receta r: this.receta)
+            {
+                for(Ingrediente i: this.ingredientes)
+                {
+                    
+                }
+            }
         }
         
         
@@ -163,6 +179,7 @@ public class ProjectCocina {
         
         ProjectCocina project = new ProjectCocina();
         
+        project.crearCliente();
         project.crearPlato();
         project.solicitarPedido();
         project.consultarReceta(p);
